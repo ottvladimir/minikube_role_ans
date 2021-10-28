@@ -1,0 +1,25 @@
+---
+---
+- name: create download directory
+  file:
+    state: directory
+    mode: 'u=rwx,go=rx'
+    dest: '{{ minikube_download_dir }}'
+
+- name: download Minikube
+  get_url:
+    url: '{{ minikube_mirror }}/{{ minikube_filename }}'
+    dest: '{{ minikube_download_dir }}/minikube'
+    mode: 'u=rw,go=r'
+
+- name: install Minikube
+  become: yes
+  copy:
+    src: '{{ minikube_download_dir }}/minikube'
+    remote_src: yes
+    dest: '{{ minikube_install_path }}'
+    force: yes
+    owner: root
+    group: root
+    mode: 'u=rwx,go=rx'
+  
