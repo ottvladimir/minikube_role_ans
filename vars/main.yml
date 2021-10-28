@@ -1,5 +1,6 @@
 ---
 # vars file for minikube
+kubectl_url: 'https://storage.googleapis.com/kubernetes-release/release/v{{ kubectl_version }}/bin/linux/amd64/kubectl
 minikube_install_dir: '/usr/local/bin'
 minikube_mirror: 'https://github.com/kubernetes/minikube/releases/download/v{{ minikube_version }}'
 # File name of the Minikube redistributable file
