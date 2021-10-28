@@ -22,4 +22,20 @@
     owner: root
     group: root
     mode: 'u=rwx,go=rx'
-  
+ 
+- name: download Kubectl
+  get_url:
+    url: '{{ kubectl_url }}'
+    dest: '{{ minikube_download_dir }}/kubectl'
+    mode: 'u=rw,go=r'
+    
+- name: install Kubectl
+  become: yes
+  copy:
+    src: '{{ minikube_download_dir }}/kubectl'
+    remote_src: yes
+    dest: '{{ minikube_install_path }}'
+    force: yes
+    owner: root
+    group: root
+    mode: 'u=rwx,go=rx'
