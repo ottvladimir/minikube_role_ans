@@ -41,6 +41,7 @@
  
 
 - name: install Ansible
+  become: yes
   pip:
     name: ansible
 
