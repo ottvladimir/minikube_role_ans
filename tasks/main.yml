@@ -38,3 +38,12 @@
     owner: root
     group: root
     mode: 'u=rwx,go=rx'
+ 
+
+- name: install Ansible
+  pip:
+    name: ansible
+
+- name: Import collections k8s
+  collections: community.kubernetes
+
